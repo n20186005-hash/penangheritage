@@ -152,7 +152,7 @@ const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.99
     <div class="gallery-grid">
       {gallery.map((src, i) => <button class="gallery-item" data-full={src} aria-label={content.gallery.imageAltPattern.replace('{n}', String(i + 1))}><img src={src} alt={content.gallery.imageAltPattern.replace('{n}', String(i + 1))} loading="lazy" /></button>)}
     </div>
-    <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox hidden" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" aria-label={content.gallery.closeLabel}>×</button>
       <img id="lightbox-img" src="" alt={content.gallery.lightboxAlt} />
     </div>
@@ -218,6 +218,24 @@ const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.99
   render();
   const lbox = document.getElementById('lightbox');
   const limg = document.getElementById('lightbox-img');
-  document.querySelectorAll('.gallery-item').forEach((b) => b.addEventListener('click', () => { if (!limg) return; limg.setAttribute('src', b.getAttribute('data-full') || ''); if (lbox) lbox.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }));
-  lbox?.addEventListener('click', (e) => { const t = e.target; if (t === lbox || (t instanceof Element && t.classList.contains('lightbox-close'))) { lbox.setAttribute('hidden', ''); document.body.style.overflow = ''; } });
+  const closeLightbox = () => {
+    if (!lbox || !limg) return;
+    lbox.classList.add('hidden');
+    lbox.setAttribute('aria-hidden', 'true');
+    limg.setAttribute('src', '');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('.gallery-item').forEach((b) => b.addEventListener('click', () => {
+    if (!lbox || !limg) return;
+    const fullSrc = b.getAttribute('data-full');
+    if (!fullSrc) return;
+    limg.setAttribute('src', fullSrc);
+    lbox.classList.remove('hidden');
+    lbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }));
+  lbox?.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t === lbox || (t instanceof Element && t.classList.contains('lightbox-close'))) closeLightbox();
+  });
 </script>
