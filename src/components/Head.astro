@@ -8,7 +8,15 @@ interface Props {
   pathname: string;
 }
 declare global {
-  interface Window { dataLayer: unknown[]; gtag: (...args: unknown[]) => void }
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+    __gtAnalyticsId: string;
+    __gtAnalyticsLoaded: boolean;
+    __gtLoadAnalytics: () => void;
+    __gtSetAnalyticsConsent: (enabled: boolean) => void;
+    [key: `ga-disable-${string}`]: boolean | unknown;
+  }
 }
 const { content, lang, siteUrl, pathname } = Astro.props;
 const canonical = siteUrl ? `${siteUrl}${pathname === '/' ? '/' : pathname}` : pathname;
@@ -51,8 +59,34 @@ const faqJson = {
     <link rel="alternate" hreflang="x-default" href={hrefFor(defaultLang)} />
     <link rel="icon" href="/icons/favicon.svg" />
     <link rel="apple-touch-icon" href="/icons/icon-180.png" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
-    <script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HXM22WWPKP');</script>
-    <script type="application/ld+json" set:html={JSON.stringify(touristJson)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqJson)} />
+    <script is:inline>
+      window.__gtAnalyticsId = 'G-HXM22WWPKP';
+      window.__gtAnalyticsLoaded = false;
+      window.__gtLoadAnalytics = function () {
+        if (window.__gtAnalyticsLoaded) return;
+        window.__gtAnalyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', window.__gtAnalyticsId);
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.__gtAnalyticsId;
+        document.head.appendChild(script);
+      };
+      window.__gtSetAnalyticsConsent = function (enabled) {
+        const gaDisableKey = `ga-disable-${window.__gtAnalyticsId}`;
+        Object.assign(window, { [gaDisableKey]: !enabled });
+        if (enabled) window.__gtLoadAnalytics();
+      };
+      try {
+        var stored = localStorage.getItem('gt-cookie-preferences');
+        var prefs = stored ? JSON.parse(stored) : null;
+        window.__gtSetAnalyticsConsent(!!(prefs && prefs.analytics === true));
+      } catch (_) {
+        window.__gtSetAnalyticsConsent(false);
+      }
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(touristJson)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJson)} />
   </head>

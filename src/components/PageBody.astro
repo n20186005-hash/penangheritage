@@ -5,6 +5,11 @@ interface Props {
   content: PageContent;
   lang: Lang;
 }
+declare global {
+  interface Window {
+    __gtSetAnalyticsConsent: (enabled: boolean) => void;
+  }
+}
 const { content, lang } = Astro.props;
 const gallery = Array.from({ length: 21 }, (_, i) => `/gallery/georgetown-unesco-historic-site-${i + 1}.jpg`);
 const mapsUrl = 'https://maps.app.goo.gl/iTorS1Eh1hJkpMXp9';
@@ -187,23 +192,125 @@ const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.99
       <button class="clear-saves" id="clear-saves">{content.plan.clearAll}</button>
     </div>
   </section>
+  <section class="legal section" id="legal">
+    <div class="section-kicker">{content.footer.legalKicker}</div>
+    <div class="section-head legal-head">
+      <h2>{content.footer.legalTitle1}<br/><span>{content.footer.legalTitle2}</span></h2>
+      <p>{content.footer.lead}</p>
+    </div>
+    <div class="legal-list">
+      <details open>
+        <summary>{content.footer.privacyTitle}<small>{content.footer.privacyUpdated}</small><b>＋</b></summary>
+        <div class="detail-content legal-copy" set:html={content.footer.privacyHtml}></div>
+      </details>
+      <details>
+        <summary>{content.footer.termsTitle}<small>{content.footer.termsUpdated}</small><b>＋</b></summary>
+        <div class="detail-content legal-copy" set:html={content.footer.termsHtml}></div>
+      </details>
+      <details>
+        <summary>{content.footer.cookiesTitle}<small>{content.footer.cookiesUpdated}</small><b>＋</b></summary>
+        <div class="detail-content cookie-panel">
+          <p>{content.footer.cookiesIntro}</p>
+          <div class="cookie-item">
+            <div>
+              <strong>{content.footer.cookieNecessaryTitle}</strong>
+              <p>{content.footer.cookieNecessaryBody}</p>
+            </div>
+            <span class="cookie-badge always-on">{content.footer.cookieAlwaysOn}</span>
+          </div>
+          <div class="cookie-item">
+            <div>
+              <strong>{content.footer.cookieAnalyticsTitle}</strong>
+              <p>{content.footer.cookieAnalyticsBody}</p>
+            </div>
+            <button type="button" class="cookie-toggle" data-cookie-toggle="analytics" aria-pressed="false">{content.footer.cookieDisabled}</button>
+          </div>
+          <div class="cookie-item">
+            <div>
+              <strong>{content.footer.cookiePreferencesTitle}</strong>
+              <p>{content.footer.cookiePreferencesBody}</p>
+            </div>
+            <button type="button" class="cookie-toggle" data-cookie-toggle="preferences" aria-pressed="false">{content.footer.cookieDisabled}</button>
+          </div>
+          <div class="cookie-item">
+            <div>
+              <strong>{content.footer.cookieMarketingTitle}</strong>
+              <p>{content.footer.cookieMarketingBody}</p>
+            </div>
+            <button type="button" class="cookie-toggle" data-cookie-toggle="marketing" aria-pressed="false">{content.footer.cookieDisabled}</button>
+          </div>
+          <p class="cookie-note">{content.footer.cookieConsentNote}</p>
+          <div class="cookie-actions">
+            <button type="button" class="button outline cookie-action" id="save-cookie-preferences">{content.footer.savePreferences}</button>
+            <button type="button" class="button outline cookie-action" id="reject-all-cookies">{content.footer.rejectAll}</button>
+          </div>
+          <p class="cookie-feedback hidden" id="cookie-feedback" aria-live="polite"></p>
+        </div>
+      </details>
+    </div>
+  </section>
 </main>
 <footer>
   <div class="footer-brand"><span class="brand-mark">GT</span><span>{content.footer.brand}</span></div>
   <p>{content.footer.note}</p>
   <span>{content.footer.copyright}</span>
 </footer>
-<script type="application/json" id="gt-i18n" set:html={JSON.stringify({ suffix: content.plan.savedSuffix, empty: content.plan.savedEmpty, done: content.plan.savedDone, remove: content.plan.removeLabel })}></script>
+<script is:inline type="application/json" id="gt-i18n" set:html={JSON.stringify({ suffix: content.plan.savedSuffix, empty: content.plan.savedEmpty, done: content.plan.savedDone, remove: content.plan.removeLabel, cookieEnabled: content.footer.cookieEnabled, cookieDisabled: content.footer.cookieDisabled, cookieSaved: content.footer.saveSuccess })}></script>
 <script is:inline>
   const gtEl = document.getElementById('gt-i18n');
   const gtI18n = gtEl ? JSON.parse(gtEl.textContent || '{}') : {};
   const key = 'gt-saved-places';
+  const cookieKey = 'gt-cookie-preferences';
   const tSuffix = gtI18n.suffix || '';
   const tEmpty = gtI18n.empty || '';
   const tDone = gtI18n.done || '';
   const tRemove = gtI18n.remove || '';
+  const tCookieEnabled = gtI18n.cookieEnabled || 'Enabled';
+  const tCookieDisabled = gtI18n.cookieDisabled || 'Disabled';
+  const tCookieSaved = gtI18n.cookieSaved || 'Preferences saved.';
+  /**
+   * @typedef {{ analytics: boolean; preferences: boolean; marketing: boolean }} CookiePrefs
+   */
   /** @returns {string[]} */
   const load = () => JSON.parse(localStorage.getItem(key) || '[]');
+  /** @param {string | null} name @returns {name is keyof CookiePrefs} */
+  const isCookiePrefKey = (name) => name === 'analytics' || name === 'preferences' || name === 'marketing';
+  /** @type {CookiePrefs} */
+  const defaultCookiePrefs = { analytics: false, preferences: true, marketing: false };
+  /** @type {CookiePrefs} */
+  let cookieDraft = { ...defaultCookiePrefs };
+  /** @returns {CookiePrefs} */
+  const loadCookiePrefs = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(cookieKey) || 'null');
+      return { ...defaultCookiePrefs, ...(saved && typeof saved === 'object' ? saved : {}) };
+    } catch (_) {
+      return { ...defaultCookiePrefs };
+    }
+  };
+  /** @param {boolean} enabled */
+  const applyAnalyticsConsent = (enabled) => {
+    if (typeof window.__gtSetAnalyticsConsent === 'function') window.__gtSetAnalyticsConsent(enabled);
+  };
+  const renderCookiePrefs = () => {
+    document.querySelectorAll('[data-cookie-toggle]').forEach((button) => {
+      const name = button.getAttribute('data-cookie-toggle');
+      if (!isCookiePrefKey(name)) return;
+      const enabled = !!cookieDraft[name];
+      button.textContent = enabled ? tCookieEnabled : tCookieDisabled;
+      button.setAttribute('aria-pressed', String(enabled));
+      button.setAttribute('data-state', enabled ? 'on' : 'off');
+    });
+  };
+  const persistCookiePrefs = () => {
+    localStorage.setItem(cookieKey, JSON.stringify(cookieDraft));
+    applyAnalyticsConsent(!!cookieDraft.analytics);
+    const feedback = document.getElementById('cookie-feedback');
+    if (feedback) {
+      feedback.textContent = tCookieSaved;
+      feedback.classList.remove('hidden');
+    }
+  };
   const render = () => {
     const saved = load();
     const list = document.querySelector('#saved-list');
@@ -216,6 +323,22 @@ const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.99
   document.querySelectorAll('[data-save]').forEach((b) => b.addEventListener('click', () => { const n = b.getAttribute('data-save') || ''; const s = load(); if (!s.includes(n)) s.push(n); localStorage.setItem(key, JSON.stringify(s)); render(); b.textContent = tDone; }));
   document.querySelector('#clear-saves')?.addEventListener('click', () => { localStorage.removeItem(key); render(); });
   render();
+  cookieDraft = loadCookiePrefs();
+  renderCookiePrefs();
+  document.querySelectorAll('[data-cookie-toggle]').forEach((button) => button.addEventListener('click', () => {
+    const name = button.getAttribute('data-cookie-toggle');
+    if (!isCookiePrefKey(name)) return;
+    cookieDraft[name] = !cookieDraft[name];
+    const feedback = document.getElementById('cookie-feedback');
+    if (feedback) feedback.classList.add('hidden');
+    renderCookiePrefs();
+  }));
+  document.getElementById('save-cookie-preferences')?.addEventListener('click', () => persistCookiePrefs());
+  document.getElementById('reject-all-cookies')?.addEventListener('click', () => {
+    cookieDraft = { analytics: false, preferences: false, marketing: false };
+    renderCookiePrefs();
+    persistCookiePrefs();
+  });
   const lbox = document.getElementById('lightbox');
   const limg = document.getElementById('lightbox-img');
   const closeLightbox = () => {
