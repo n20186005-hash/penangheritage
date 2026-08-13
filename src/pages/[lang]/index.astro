@@ -1,0 +1,23 @@
+---
+// Locale routes: /en/ (English) and /zh/ (Chinese). Malay is served at the root by src/pages/index.astro.
+import '../../styles.css';
+import { languagesList, defaultLang, type Lang } from '../../i18n/ui';
+import { content as enContent } from '../../i18n/en';
+import { content as zhContent } from '../../i18n/zh';
+import Head from '../../components/Head.astro';
+import PageBody from '../../components/PageBody.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return languagesList.filter((l) => l !== defaultLang).map((l) => ({ params: { lang: l }, props: { lang: l } }));
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const content = lang === 'en' ? enContent : zhContent;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
+---
+<Head content={content} lang={lang} siteUrl={siteUrl} pathname={Astro.url.pathname} />
+<body>
+  <PageBody content={content} lang={lang} />
+</body>

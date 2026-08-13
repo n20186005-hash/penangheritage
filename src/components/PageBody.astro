@@ -1,0 +1,223 @@
+---
+import { languages, languagesList, pathForLang, type Lang, type PageContent } from '../i18n/ui';
+
+interface Props {
+  content: PageContent;
+  lang: Lang;
+}
+const { content, lang } = Astro.props;
+const gallery = Array.from({ length: 21 }, (_, i) => `/gallery/georgetown-unesco-historic-site-${i + 1}.jpg`);
+const mapsUrl = 'https://maps.app.goo.gl/iTorS1Eh1hJkpMXp9';
+const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.999760586508!2d100.3353972121393!3d5.417003694539544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac391217398d1%3A0xe3374c478de7ca59!2sGeorgetown%20UNESCO%20Historic%20Site!5e0!3m2!1sms!2smy!4v1786539797328!5m2!1sms!2smy';
+---
+<header class="topbar">
+  <a class="brand" href="#top" aria-label={content.header.brandTop}>
+    <span class="brand-mark">GT</span>
+    <span>{content.header.brandTop}<br/><b>{content.header.brandBottom}</b></span>
+  </a>
+  <div class="topbar-right">
+    <nav>
+      <a href="#cerita">{content.header.nav.cerita}</a>
+      <a href="#sejarah">{content.header.nav.sejarah}</a>
+      <a href="#laluan">{content.header.nav.laluan}</a>
+      <a href="#praktikal">{content.header.nav.praktikal}</a>
+      <a href="#galeri">{content.header.nav.galeri}</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language · Bahasa · 语言">
+      {languagesList.map((l) => <a href={pathForLang(l)} lang={languages[l].htmlLang} class={l === lang ? 'active' : undefined} aria-current={l === lang ? 'true' : undefined}>{languages[l].short}</a>)}
+    </nav>
+    <button class="save-top" data-save={content.meta.jsonldName}>{content.header.savePlan}</button>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">{content.hero.eyebrow}</p>
+      <h1>{content.hero.title1}<br/><em>{content.hero.title2}</em></h1>
+      <p class="lede">{content.hero.lede}</p>
+      <div class="hero-actions">
+        <a class="button dark" href="#laluan">{content.hero.ctaPrimary} <span>↘</span></a>
+        <button class="button outline" data-save={content.meta.jsonldName}>{content.hero.ctaSecondary}</button>
+      </div>
+      <div class="hero-note">
+        <span>{content.hero.noteNumber}</span>
+        <p>{content.hero.noteTitle}<br/><small>{content.hero.noteSub}</small></p>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/gallery/georgetown-unesco-historic-site-1.jpg" alt={content.hero.imageAlt} />
+      <span class="photo-stamp" set:html={content.hero.stamp}></span>
+    </div>
+  </section>
+  <section class="intro section" id="cerita">
+    <div class="section-kicker">{content.intro.kicker}</div>
+    <div class="intro-grid">
+      <h2>{content.intro.title1}<br/><span>{content.intro.title2}</span></h2>
+      <div>
+        <p class="big-copy">{content.intro.bigCopy}</p>
+        <p>{content.intro.body}</p>
+        <a class="text-link" href="https://whc.unesco.org/en/list/1223/" target="_blank" rel="noreferrer">{content.intro.linkText}</a>
+        <img class="intro-image" src="/gallery/georgetown-unesco-historic-site-7.jpg" alt={content.intro.imageAlt} loading="lazy" />
+      </div>
+    </div>
+  </section>
+  <section class="feature-band">
+    <div class="feature-image">
+      <img src="/gallery/georgetown-unesco-historic-site-2.jpg" alt={content.feature.imageAlt} loading="lazy" />
+    </div>
+    <div class="feature-copy">
+      <p class="eyebrow">{content.feature.eyebrow}</p>
+      <blockquote>{content.feature.quote}</blockquote>
+      <p>{content.feature.body}</p>
+      <div class="stat-row">
+        <div>
+          <strong>{content.feature.stat1Value}</strong>
+          <span>{content.feature.stat1Line1}<br/>{content.feature.stat1Line2}</span>
+        </div>
+        <div>
+          <strong>{content.feature.stat2Value}</strong>
+          <span>{content.feature.stat2Line1}<br/>{content.feature.stat2Line2}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="history section" id="sejarah">
+    <div class="section-kicker">{content.history.kicker}</div>
+    <div class="history-grid">
+      {content.history.items.map((h, i) => <article><span>0{i + 1}</span><h3>{h.title}</h3><p>{h.text}</p></article>)}
+    </div>
+    <p class="history-note">{content.history.note}</p>
+  </section>
+  <section class="routes section" id="laluan">
+    <div class="section-kicker">{content.routes.kicker}</div>
+    <div class="section-head">
+      <h2>{content.routes.title1}<br/><span>{content.routes.title2}</span></h2>
+      <p>{content.routes.body}</p>
+    </div>
+    <div class="cards">
+      {content.routes.cards.map((item, i) => <article class="place-card">
+        <div class="card-image"><img src={item.image} alt={item.title} loading="lazy" /><span>0{i + 1}</span></div>
+        <p class="card-tag">{item.tag}</p>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+        <button class="card-save" data-save={item.title}>{content.routes.saveLabel}</button>
+      </article>)}
+    </div>
+  </section>
+  <section class="practical section" id="praktikal">
+    <div class="section-kicker">{content.practical.kicker}</div>
+    <div class="practical-grid">
+      <div>
+        <h2>{content.practical.title1}<br/><span>{content.practical.title2}</span></h2>
+        <p class="big-copy">{content.practical.bigCopy}</p>
+      </div>
+      <div class="info-list">
+        {content.practical.items.map((item, i) => <details open={i === 0}>
+          <summary><span>0{i + 1}</span> {item.title} <b>＋</b></summary>
+          <div class="detail-content" set:html={item.html}></div>
+        </details>)}
+      </div>
+    </div>
+  </section>
+  <section class="food section">
+    <div class="food-photo">
+      <img src="/gallery/georgetown-unesco-historic-site-6.jpg" alt={content.food.imageAlt} loading="lazy" />
+    </div>
+    <div class="food-copy">
+      <p class="section-kicker">{content.food.kicker}</p>
+      <h2>{content.food.title1}<br/><span>{content.food.title2}</span></h2>
+      <p>{content.food.body}</p>
+      <div class="food-tags">
+        {content.food.tags.map((t) => <span>{t}</span>)}
+      </div>
+    </div>
+  </section>
+  <section class="nearby section">
+    <div class="section-kicker">{content.nearby.kicker}</div>
+    <div class="nearby-head">
+      <h2>{content.nearby.title1}<br/><span>{content.nearby.title2}</span></h2>
+      <p>{content.nearby.body}</p>
+    </div>
+    <div class="nearby-grid">
+      {content.nearby.items.map((item, i) => <div><span>0{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}
+    </div>
+    <p class="nearby-note">{content.nearby.note}</p>
+  </section>
+  <section class="gallery section" id="galeri">
+    <div class="section-kicker">{content.gallery.kicker}</div>
+    <div class="gallery-head">
+      <h2>{content.gallery.title1}<br/><span>{content.gallery.title2}</span></h2>
+      <p>{content.gallery.body}</p>
+    </div>
+    <div class="gallery-grid">
+      {gallery.map((src, i) => <button class="gallery-item" data-full={src} aria-label={content.gallery.imageAltPattern.replace('{n}', String(i + 1))}><img src={src} alt={content.gallery.imageAltPattern.replace('{n}', String(i + 1))} loading="lazy" /></button>)}
+    </div>
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" aria-label={content.gallery.closeLabel}>×</button>
+      <img id="lightbox-img" src="" alt={content.gallery.lightboxAlt} />
+    </div>
+  </section>
+  <section class="map-section">
+    <div class="map-copy">
+      <p class="section-kicker">{content.map.kicker}</p>
+      <h2>{content.map.title1}<br/><span>{content.map.title2}</span></h2>
+      <p>{content.map.body}</p>
+      <a class="button light" href={mapsUrl} target="_blank" rel="noreferrer">{content.map.button}</a>
+    </div>
+    <div class="map-frame">
+      <iframe title={content.map.iframeTitle} src={mapsEmbed} loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </section>
+  <section class="faq section">
+    <div class="section-kicker">{content.faq.kicker}</div>
+    <h2>{content.faq.title1}<br/><span>{content.faq.title2}</span></h2>
+    <div class="faq-list">
+      {content.faq.items.map((x) => <details><summary>{x.q}<b>＋</b></summary><p>{x.a}</p></details>)}
+    </div>
+  </section>
+  <section class="plan section">
+    <div>
+      <p class="section-kicker">{content.plan.kicker}</p>
+      <h2>{content.plan.title1}<br/><span>{content.plan.title2}</span></h2>
+      <p>{content.plan.body}</p>
+    </div>
+    <div class="saved-box">
+      <div class="saved-head"><strong>{content.plan.savedTitle}</strong><span id="saved-count">0 {content.plan.savedSuffix}</span></div>
+      <ul id="saved-list"><li class="empty" set:html={content.plan.savedEmpty}></li></ul>
+      <button class="clear-saves" id="clear-saves">{content.plan.clearAll}</button>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-brand"><span class="brand-mark">GT</span><span>{content.footer.brand}</span></div>
+  <p>{content.footer.note}</p>
+  <span>{content.footer.copyright}</span>
+</footer>
+<script type="application/json" id="gt-i18n" set:html={JSON.stringify({ suffix: content.plan.savedSuffix, empty: content.plan.savedEmpty, done: content.plan.savedDone, remove: content.plan.removeLabel })}></script>
+<script is:inline>
+  const gtEl = document.getElementById('gt-i18n');
+  const gtI18n = gtEl ? JSON.parse(gtEl.textContent || '{}') : {};
+  const key = 'gt-saved-places';
+  const tSuffix = gtI18n.suffix || '';
+  const tEmpty = gtI18n.empty || '';
+  const tDone = gtI18n.done || '';
+  const tRemove = gtI18n.remove || '';
+  /** @returns {string[]} */
+  const load = () => JSON.parse(localStorage.getItem(key) || '[]');
+  const render = () => {
+    const saved = load();
+    const list = document.querySelector('#saved-list');
+    const count = document.querySelector('#saved-count');
+    if (!list || !count) return;
+    count.textContent = saved.length + ' ' + tSuffix;
+    list.innerHTML = saved.length ? saved.map((x) => `<li>${x}<button aria-label="${tRemove} ${x}" data-remove="${x}">×</button></li>`).join('') : `<li class="empty">${tEmpty}</li>`;
+    document.querySelectorAll('[data-remove]').forEach((b) => b.addEventListener('click', () => { localStorage.setItem(key, JSON.stringify(load().filter((x) => x !== b.getAttribute('data-remove')))); render(); }));
+  };
+  document.querySelectorAll('[data-save]').forEach((b) => b.addEventListener('click', () => { const n = b.getAttribute('data-save') || ''; const s = load(); if (!s.includes(n)) s.push(n); localStorage.setItem(key, JSON.stringify(s)); render(); b.textContent = tDone; }));
+  document.querySelector('#clear-saves')?.addEventListener('click', () => { localStorage.removeItem(key); render(); });
+  render();
+  const lbox = document.getElementById('lightbox');
+  const limg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.gallery-item').forEach((b) => b.addEventListener('click', () => { if (!limg) return; limg.setAttribute('src', b.getAttribute('data-full') || ''); if (lbox) lbox.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }));
+  lbox?.addEventListener('click', (e) => { const t = e.target; if (t === lbox || (t instanceof Element && t.classList.contains('lightbox-close'))) { lbox.setAttribute('hidden', ''); document.body.style.overflow = ''; } });
+</script>

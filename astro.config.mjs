@@ -9,5 +9,10 @@ export default defineConfig({
   adapter: cloudflare(),
   site,
   integrations: site ? [sitemap()] : [],
+  i18n: {
+    defaultLocale: 'ms',
+    locales: ['ms', 'en', 'zh'],
+    routing: { prefixDefaultLocale: false }
+  },
   vite: { ssr: { noExternal: ['lucide-astro'] } }
 });

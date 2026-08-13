@@ -1,0 +1,58 @@
+---
+import { languages, languagesList, defaultLang, pathForLang, type Lang, type PageContent } from '../i18n/ui';
+
+interface Props {
+  content: PageContent;
+  lang: Lang;
+  siteUrl: string;
+  pathname: string;
+}
+declare global {
+  interface Window { dataLayer: unknown[]; gtag: (...args: unknown[]) => void }
+}
+const { content, lang, siteUrl, pathname } = Astro.props;
+const canonical = siteUrl ? `${siteUrl}${pathname === '/' ? '/' : pathname}` : pathname;
+const hrefFor = (l: Lang) => `${siteUrl}${pathForLang(l)}`;
+const ogImage = `${siteUrl}/gallery/georgetown-unesco-historic-site-1.jpg`;
+const touristJson = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: content.meta.jsonldName,
+  description: content.meta.jsonldDescription,
+  inLanguage: lang,
+  address: { '@type': 'PostalAddress', streetAddress: '159, Lebuh Chulia', addressLocality: 'George Town', postalCode: '10200', addressRegion: 'Pulau Pinang', addressCountry: 'MY' },
+  geo: { '@type': 'GeoCoordinates', latitude: 5.417003694539544, longitude: 100.3353972121393 },
+  openingHours: 'Mo-Su 00:00-23:59',
+  isAccessibleForFree: true,
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', ratingCount: '13491' }
+};
+const faqJson = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: content.faq.items.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } }))
+};
+---
+<!doctype html>
+<html lang={languages[lang].htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{content.meta.title}</title>
+    <meta name="description" content={content.meta.description} />
+    <link rel="canonical" href={canonical} />
+    {siteUrl && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={content.meta.ogTitle} />
+    <meta property="og:description" content={content.meta.ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={languages[lang].htmlLang} />
+    {languagesList.map((l) => <link rel="alternate" hreflang={l} href={hrefFor(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={hrefFor(defaultLang)} />
+    <link rel="icon" href="/icons/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
+    <script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HXM22WWPKP');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(touristJson)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqJson)} />
+  </head>
