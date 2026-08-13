@@ -10,9 +10,9 @@ pnpm check
 pnpm build
 ```
 
-Set `PUBLIC_SITE_URL` only when the final domain is known. It is the only site URL configuration point; when omitted, the site still builds and uses relative canonical fallback while skipping sitemap integration.
+The site URL is `https://penangheritage.org` by default (set in `astro.config.mjs`); override with `PUBLIC_SITE_URL` for preview environments. It is the only site URL configuration point — canonical, `og:url`, JSON-LD and the sitemap integration all derive from it.
 
-For Cloudflare Workers, deploy the Astro output with the Cloudflare adapter using the Cloudflare dashboard or Wrangler. No database, auth, CMS, or server-side storage is used.
+For Cloudflare Workers, deploy the Astro output with the Cloudflare adapter using the Cloudflare dashboard or Wrangler. Bind the custom domain `penangheritage.org` in the Cloudflare dashboard (Workers → your worker → Custom Domains). No database, auth, CMS, or server-side storage is used.
 
 ## Notes
 

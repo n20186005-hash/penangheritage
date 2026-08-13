@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Astro / build output
+dist/
+.astro/
+
+# Wrangler / Cloudflare
+.wrangler/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
