@@ -3,10 +3,10 @@ import type { PageContent } from './ui';
 // Bahasa Melayu — kandungan penuh
 export const content: PageContent = {
   meta: {
-    title: 'George Town UNESCO — Jejak Warisan',
-    description: 'Panduan berjalan kaki ke tapak Warisan Dunia UNESCO George Town, Pulau Pinang — sejarah, pengangkutan, makanan dan laluan pilihan.',
-    ogTitle: 'George Town UNESCO — Jejak Warisan',
-    ogDescription: 'Satu bandar pelabuhan, banyak lapisan cerita.',
+    title: 'Panduan Warisan Pulau Pinang — Tapak Warisan Dunia UNESCO George Town',
+    description: 'Terokai Tapak Warisan Dunia UNESCO George Town, Pulau Pinang — laluan jalan kaki warisan, tempat wajib lawati, makanan jalanan dan pelan lawatan sendiri percuma. Mula meneroka hari ini!',
+    ogTitle: 'Panduan Warisan Pulau Pinang — Tapak Warisan Dunia UNESCO George Town',
+    ogDescription: 'Laluan warisan, tempat menarik dan pelan lawatan sendiri di George Town, Pulau Pinang.',
     jsonldName: 'George Town UNESCO Historic Site',
     jsonldDescription: 'Teras bersejarah George Town, Pulau Pinang, yang diiktiraf kerana seni bina dan landskap budayanya yang unik.'
   },
@@ -129,6 +129,9 @@ export const content: PageContent = {
     title1: 'Anda tanya,',
     title2: 'kami jawab.',
     items: [
+      { q: 'Adakah George Town sebuah Tapak Warisan Dunia UNESCO?', a: 'Ya. George Town disenaraikan dalam Senarai Warisan Dunia UNESCO pada 2008 bersama Melaka, diiktiraf kerana landskap bandar pelbagai budaya yang masih didiami hingga hari ini. Panduan ini merangkumi teras bersejarah — lihat senarai rasmi di whc.unesco.org/en/list/1223.' },
+      { q: 'Apakah tempat wajib lawati jika saya hanya ada setengah hari?', a: 'Berjalan satu pusingan padat: rumah kongsi Khoo Kongsi, kawasan mural Lebuh Armenian, tepi laut Clan Jetties dan Fort Cornwallis. Empat hingga lima jam cukup untuk keempat-empatnya, dengan satu perhentian makanan jalanan di antara.' },
+      { q: 'Adakah laluan warisan pandu sendiri yang boleh saya ikuti?', a: 'Ya — tiga laluan bertema di atas (Clan Jetties, Mural Quarter, Khoo Kongsi) sesuai dijadikan laluan pandu sendiri tanpa tempahan atau pemandu. Simpan tempat yang anda mahu dengan butang ＋; senarai itu kekal pada peranti anda dan boleh digunakan tanpa talian semasa berjalan.' },
       { q: 'Adakah tapak Warisan Dunia UNESCO George Town memerlukan tiket?', a: 'Kawasan bersejarah itu sendiri terbuka kepada pejalan kaki tanpa tiket bersatu. Sesetengah rumah kongsi, muzium dan tarikan berbayar menjual tiket berasingan — semak notis di lokasi sebelum pergi.' },
       { q: 'Bagaimana saya sampai ke sini dari Lapangan Terbang Antarabangsa Pulau Pinang?', a: 'Lapangan terbang berjarak kira-kira 18 km dari George Town. Naik bas Rapid Penang, atau gunakan teksi atau e-hailing; masa perjalanan berbeza mengikut trafik, jadi peruntukkan 35–60 minit.' },
       { q: 'Berapa lama masa yang perlu saya peruntukkan?', a: 'Pelawat kali pertama patut peruntukkan setengah hari hingga satu hari penuh. Jika mahu menikmati seni bina, makan jalanan dan sertakan laluan Clan Jetties, satu hari penuh lebih selesa.' },

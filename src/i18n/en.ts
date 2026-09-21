@@ -3,10 +3,10 @@ import type { PageContent } from './ui';
 // English — full content
 export const content: PageContent = {
   meta: {
-    title: 'George Town UNESCO — Heritage Trails',
-    description: 'A walking guide to the George Town UNESCO World Heritage Site, Penang — history, transport, food and suggested routes.',
-    ogTitle: 'George Town UNESCO — Heritage Trails',
-    ogDescription: 'A port city, a thousand stories.',
+    title: 'Penang Heritage Guide — George Town UNESCO World Heritage Site',
+    description: 'Explore George Town, Penang\u2019s UNESCO World Heritage Site — heritage walking routes, top places to visit, street food and free self-guided tour plans. Start exploring today!',
+    ogTitle: 'Penang Heritage Guide — George Town UNESCO World Heritage Site',
+    ogDescription: 'Heritage walks, top sights and self-guided tour plans in George Town, Penang.',
     jsonldName: 'George Town UNESCO Historic Site',
     jsonldDescription: 'Historic core of George Town, Penang, recognised for its unique architectural and cultural townscape.'
   },
@@ -129,6 +129,9 @@ export const content: PageContent = {
     title1: 'You ask,',
     title2: 'we answer.',
     items: [
+      { q: 'Is George Town a UNESCO World Heritage Site?', a: 'Yes. George Town was inscribed on the UNESCO World Heritage List in 2008 together with Malacca, recognised for a multicultural townscape that is still lived in today. This guide covers the historic core — see the official listing at whc.unesco.org/en/list/1223.' },
+      { q: 'What are the must-see places if I only have half a day?', a: 'Walk one compact loop: Khoo Kongsi clan house, the Lebuh Armenian mural quarter, the Clan Jetties waterfront and Fort Cornwallis. Four to five hours covers all four, with a street-food stop in between.' },
+      { q: 'Is there a self-guided heritage walk I can follow?', a: 'Yes — the three themed routes above (Clan Jetties, Mural Quarter, Khoo Kongsi) work as self-guided walks with no booking or guide. Save the places you want with the ＋ button; the list stays on your device and can be used offline while you walk.' },
       { q: 'Does the George Town UNESCO Historic Site require tickets?', a: 'The historic district itself is open to walking visitors with no unified ticket. Some clan houses, museums and paid attractions sell separate tickets — check their on-site notices before you go.' },
       { q: 'How do I get here from Penang International Airport?', a: 'The airport is about 18 km from George Town. Take a Rapid Penang bus, or use a taxi or ride-hailing service; journey time varies with traffic, so allow 35–60 minutes.' },
       { q: 'How much time should I allow?', a: 'First-time visitors should allow half a day to a full day. If you want to take in the architecture, eat street food and include the Clan Jetties route, a full day is more comfortable.' },

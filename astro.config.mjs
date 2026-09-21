@@ -8,7 +8,9 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
   site,
-  integrations: site ? [sitemap()] : [],
+  integrations: site
+    ? [sitemap({ i18n: { defaultLocale: 'ms', locales: { ms: 'ms-MY', en: 'en', zh: 'zh-Hans' } } })]
+    : [],
   i18n: {
     defaultLocale: 'ms',
     locales: ['ms', 'en', 'zh'],

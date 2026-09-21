@@ -1,0 +1,6 @@
+# HSTS：强制浏览器后续一律走 HTTPS（HTTP→HTTPS 301 由 Cloudflare「Always Use HTTPS」负责）
+https://*/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin

@@ -21,17 +21,27 @@ declare global {
 const { content, lang, siteUrl, pathname } = Astro.props;
 const canonical = siteUrl ? `${siteUrl}${pathname === '/' ? '/' : pathname}` : pathname;
 const hrefFor = (l: Lang) => `${siteUrl}${pathForLang(l)}`;
-const ogImage = `${siteUrl}/gallery/georgetown-unesco-historic-site-1.jpg`;
+const ogImage = `${siteUrl}/og-cover.jpg`;
+const heroImage = '/gallery/webp/georgetown-unesco-historic-site-1-1600.webp';
+const mapsUrl = 'https://maps.app.goo.gl/iTorS1Eh1hJkpMXp9';
 const touristJson = {
   '@context': 'https://schema.org',
   '@type': 'TouristAttraction',
   name: content.meta.jsonldName,
   description: content.meta.jsonldDescription,
-  inLanguage: lang,
+  url: canonical,
+  image: [ogImage],
+  sameAs: ['https://whc.unesco.org/en/list/1223'],
+  inLanguage: languages[lang].htmlLang,
+  availableLanguage: languagesList.map((l) => languages[l].htmlLang),
   address: { '@type': 'PostalAddress', streetAddress: '159, Lebuh Chulia', addressLocality: 'George Town', postalCode: '10200', addressRegion: 'Pulau Pinang', addressCountry: 'MY' },
   geo: { '@type': 'GeoCoordinates', latitude: 5.417003694539544, longitude: 100.3353972121393 },
+  hasMap: mapsUrl,
   openingHours: 'Mo-Su 00:00-23:59',
   isAccessibleForFree: true,
+  publicAccess: true,
+  touristType: ['Culture', 'Sightseeing'],
+  includesAttraction: content.nearby.items.map((x) => ({ '@type': 'TouristAttraction', name: x.title, description: x.text })),
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', ratingCount: '13491' }
 };
 const faqJson = {
@@ -54,11 +64,22 @@ const faqJson = {
     <meta property="og:description" content={content.meta.ogDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={languages[lang].htmlLang} />
-    {languagesList.map((l) => <link rel="alternate" hreflang={l} href={hrefFor(l)} />)}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={content.hero.imageAlt} />
+    <meta property="og:locale" content={languages[lang].ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={content.meta.ogTitle} />
+    <meta name="twitter:description" content={content.meta.ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    {languagesList.map((l) => <link rel="alternate" hreflang={languages[l].hreflang} href={hrefFor(l)} />)}
     <link rel="alternate" hreflang="x-default" href={hrefFor(defaultLang)} />
     <link rel="icon" href="/icons/favicon.svg" />
     <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+    <link rel="preload" as="image" href={heroImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" />
     <script is:inline>
       window.__gtAnalyticsId = 'G-HXM22WWPKP';
       window.__gtAnalyticsLoaded = false;

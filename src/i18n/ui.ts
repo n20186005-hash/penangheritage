@@ -1,8 +1,8 @@
 // 语言注册与内容类型定义
 export const languages = {
-  ms: { label: 'Bahasa Melayu', short: 'MS', htmlLang: 'ms' },
-  en: { label: 'English', short: 'EN', htmlLang: 'en' },
-  zh: { label: '中文', short: '中', htmlLang: 'zh-CN' }
+  ms: { label: 'Bahasa Melayu', short: 'MS', htmlLang: 'ms-MY', hreflang: 'ms-MY', ogLocale: 'ms_MY' },
+  en: { label: 'English', short: 'EN', htmlLang: 'en', hreflang: 'en', ogLocale: 'en_US' },
+  zh: { label: '中文', short: '中', htmlLang: 'zh-Hans', hreflang: 'zh-Hans', ogLocale: 'zh_CN' }
 } as const;
 
 export type Lang = keyof typeof languages;
