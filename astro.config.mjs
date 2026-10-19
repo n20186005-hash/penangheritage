@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 
 const site = process.env.PUBLIC_SITE_URL || 'https://penangheritage.org';
 
 export default defineConfig({
-  output: 'server',
-  adapter: cloudflare(),
+  output: 'static',
   site,
   integrations: site
     ? [sitemap({ filter: (page) => !page.endsWith('/404/'), i18n: { defaultLocale: 'ms', locales: { ms: 'ms-MY', en: 'en', zh: 'zh-Hans' } } })]
