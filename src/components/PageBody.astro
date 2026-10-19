@@ -15,7 +15,7 @@ const photo = (n: number, size: 800 | 1600) => `/gallery/webp/georgetown-unesco-
 const cardPhoto = (src: string) => src.replace('/gallery/', '/gallery/webp/').replace(/\.jpg$/, '-1600.webp');
 const gallery = Array.from({ length: 21 }, (_, i) => ({ thumb: photo(i + 1, 800), full: photo(i + 1, 1600) }));
 const mapsUrl = 'https://maps.app.goo.gl/iTorS1Eh1hJkpMXp9';
-const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.999760586508!2d100.3353972121393!3d5.417003694539544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac391217398d1%3A0xe3374c478de7ca59!2sGeorgetown%20UNESCO%20Historic%20Site!5e0!3m2!1sms!2smy!4v1786539797328!5m2!1sms!2smy';
+const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.999760586508!2d100.3379775!3d5.417003694539544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac391217398d1%3A0xe3374c478de7ca59!2sGeorgetown%20UNESCO%20Historic%20Site!5e0!3m2!1sms!2smy!4v1786539797328!5m2!1sms!2smy';
 ---
 <header class="topbar">
   <a class="brand" href="#top" aria-label={content.header.brandTop}>
@@ -94,6 +94,7 @@ const mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.99
       {content.history.items.map((h, i) => <article><span>0{i + 1}</span><h3>{h.title}</h3><p>{h.text}</p></article>)}
     </div>
     <p class="history-note">{content.history.note}</p>
+    <p class="history-note"><a href="https://gtwhi.com.my/about-us/george-town-unesco-world-heritage-site/" target="_blank" rel="noreferrer">George Town World Heritage Incorporated ↗</a> · <a href="https://gtwhi.com.my/frequently-asked-questions/" target="_blank" rel="noreferrer">FAQ ↗</a> · <a href={mapsUrl} target="_blank" rel="noreferrer">Google Maps ↗</a></p>
   </section>
   <section class="routes section" id="laluan">
     <div class="section-kicker">{content.routes.kicker}</div>

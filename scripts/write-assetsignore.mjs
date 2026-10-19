@@ -1,6 +1,6 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
 
-// Workers Static Assets 模式下，dist/_worker.js/ 是 Worker 脚本本身（通过 wrangler.toml 的 main 字段加载），
-// 不能作为静态资源上传，否则会暴露服务端代码。.assetsignore 中的规则按 gitignore 语法匹配 assets 目录。
+// Keep the Worker entry point outside the publicly served asset set.
 mkdirSync('dist', { recursive: true });
-writeFileSync('dist/.assetsignore', '_worker.js\n');
+copyFileSync('scripts/canonical-worker.mjs', 'dist/canonical-worker.js');
+writeFileSync('dist/.assetsignore', 'canonical-worker.js\n');
