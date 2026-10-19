@@ -17,7 +17,8 @@ const { lang } = Astro.props as { lang: Lang };
 const content = lang === 'en' ? enContent : zhContent;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || '';
 ---
-<Head content={content} lang={lang} siteUrl={siteUrl} pathname={Astro.url.pathname} />
+<Head content={content} lang={lang} siteUrl={siteUrl} pathname={Astro.url.pathname}>
 <body>
   <PageBody content={content} lang={lang} />
 </body>
+</Head>

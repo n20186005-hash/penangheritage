@@ -1,6 +1,8 @@
 name = "penangheritage"
 compatibility_date = "2025-01-01"
-main = "dist/_worker.js/index.js"
+main = "dist/canonical-worker.js"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true

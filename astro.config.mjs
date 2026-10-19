@@ -9,7 +9,7 @@ export default defineConfig({
   adapter: cloudflare(),
   site,
   integrations: site
-    ? [sitemap({ i18n: { defaultLocale: 'ms', locales: { ms: 'ms-MY', en: 'en', zh: 'zh-Hans' } } })]
+    ? [sitemap({ filter: (page) => !page.endsWith('/404/'), i18n: { defaultLocale: 'ms', locales: { ms: 'ms-MY', en: 'en', zh: 'zh-Hans' } } })]
     : [],
   i18n: {
     defaultLocale: 'ms',

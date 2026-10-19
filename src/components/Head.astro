@@ -34,15 +34,12 @@ const touristJson = {
   sameAs: ['https://whc.unesco.org/en/list/1223'],
   inLanguage: languages[lang].htmlLang,
   availableLanguage: languagesList.map((l) => languages[l].htmlLang),
-  address: { '@type': 'PostalAddress', streetAddress: '159, Lebuh Chulia', addressLocality: 'George Town', postalCode: '10200', addressRegion: 'Pulau Pinang', addressCountry: 'MY' },
-  geo: { '@type': 'GeoCoordinates', latitude: 5.417003694539544, longitude: 100.3353972121393 },
+  address: { '@type': 'PostalAddress', addressLocality: 'George Town', addressRegion: 'Pulau Pinang', addressCountry: 'MY' },
+  geo: { '@type': 'GeoCoordinates', latitude: 5.4170037, longitude: 100.3379775 },
   hasMap: mapsUrl,
-  openingHours: 'Mo-Su 00:00-23:59',
-  isAccessibleForFree: true,
   publicAccess: true,
   touristType: ['Culture', 'Sightseeing'],
-  includesAttraction: content.nearby.items.map((x) => ({ '@type': 'TouristAttraction', name: x.title, description: x.text })),
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.4', ratingCount: '13491' }
+  includesAttraction: content.nearby.items.map((x) => ({ '@type': 'TouristAttraction', name: x.title, description: x.text }))
 };
 const faqJson = {
   '@context': 'https://schema.org',
@@ -111,3 +108,5 @@ const faqJson = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(touristJson)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJson)} />
   </head>
+  <slot />
+</html>

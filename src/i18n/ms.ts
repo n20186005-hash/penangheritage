@@ -3,10 +3,10 @@ import type { PageContent } from './ui';
 // Bahasa Melayu — kandungan penuh
 export const content: PageContent = {
   meta: {
-    title: 'Panduan Warisan Pulau Pinang — Tapak Warisan Dunia UNESCO George Town',
-    description: 'Terokai Tapak Warisan Dunia UNESCO George Town, Pulau Pinang — laluan jalan kaki warisan, tempat wajib lawati, makanan jalanan dan pelan lawatan sendiri percuma. Mula meneroka hari ini!',
-    ogTitle: 'Panduan Warisan Pulau Pinang — Tapak Warisan Dunia UNESCO George Town',
-    ogDescription: 'Laluan warisan, tempat menarik dan pelan lawatan sendiri di George Town, Pulau Pinang.',
+    title: "George Town UNESCO | Panduan Warisan, Waktu & Peta",
+    description: "Rancang jalan kaki warisan George Town, Pulau Pinang: sejarah UNESCO, Clan Jetties, seni jalanan, waktu lawatan, tiket tarikan dan titik rujukan peta.",
+    ogTitle: "George Town UNESCO | Panduan Warisan, Waktu & Peta",
+    ogDescription: "Rancang jalan kaki warisan George Town, Pulau Pinang: sejarah UNESCO, Clan Jetties, seni jalanan, waktu lawatan, tiket tarikan dan titik rujukan peta.",
     jsonldName: 'George Town UNESCO Historic Site',
     jsonldDescription: 'Teras bersejarah George Town, Pulau Pinang, yang diiktiraf kerana seni bina dan landskap budayanya yang unik.'
   },
@@ -18,8 +18,8 @@ export const content: PageContent = {
   },
   hero: {
     eyebrow: 'PULAU PINANG · MALAYSIA',
-    title1: 'Bandar pelabuhan,',
-    title2: 'seribu lapis cerita.',
+    title1: "George Town,",
+    title2: "bandar UNESCO yang hidup.",
     lede: 'George Town UNESCO Historic Site bukan muzium yang beku. Ia ialah bandar yang masih bernafas — di antara kedai lama, rumah ibadat, gerai sarapan dan bayang petang.',
     ctaPrimary: 'Mulakan berjalan',
     ctaSecondary: '＋ Simpan laluan',
@@ -34,7 +34,7 @@ export const content: PageContent = {
     title1: 'Satu bandar.',
     title2: 'Banyak pertemuan.',
     bigCopy: 'Di sini, sejarah bukan sekadar tarikh. Ia hadir dalam bentuk pintu kayu, jubin encaustic, bunyi loceng kuil dan bau rempah yang keluar dari lorong sempit.',
-    body: 'George Town berkembang sebagai pelabuhan entrepôt di Selat Melaka. Lapisan Melayu, Cina, India, Eropah dan komuniti peranakan membentuk sebuah landskap bandar yang sukar ditemui di tempat lain.',
+    body: "George Town dan Melaka disenaraikan bersama sebagai Tapak Warisan Dunia UNESCO pada 7 Julai 2008. Zon teras George Town meliputi 109.38 hektar dengan zon penampan 150.04 hektar. Rumah kedai, rumah ibadat dan tradisi harian penduduk membentuk warisan bandar pelabuhan pelbagai budaya yang masih hidup.",
     linkText: 'Baca tentang nilai sejagat luar biasa ↗',
     imageAlt: 'Suasana jalan bersejarah George Town'
   },
@@ -43,11 +43,11 @@ export const content: PageContent = {
     quote: '“Sebuah contoh luar biasa bandar perdagangan pelbagai budaya di Asia Tenggara.”',
     body: 'Mulakan di Lebuh Chulia, biarkan kaki memilih simpang. Setiap blok membuka satu lagi bab: rumah kongsi, masjid, kuil, gereja dan kedai kopi yang masih menjadi sebahagian daripada kehidupan harian.',
     stat1Value: '4.4',
-    stat1Line1: 'penilaian peta',
-    stat1Line2: '13,491 ulasan',
-    stat2Value: 'FREE',
-    stat2Line1: 'akses kawasan',
-    stat2Line2: 'warisan terbuka',
+    stat1Line1: "Google Maps · 19 Okt 2026",
+    stat1Line2: "13,515 ulasan",
+    stat2Value: "2008",
+    stat2Line1: "penyenaraian UNESCO",
+    stat2Line2: "bersama Melaka",
     imageAlt: 'Deretan shophouse warisan dengan tingkap hijau'
   },
   history: {
@@ -57,15 +57,15 @@ export const content: PageContent = {
       { title: 'Simfoni lima kaum', text: 'Komuniti Melayu, Cina, India, Eropah dan peranakan mendiami blok yang sama bersebelahan. Masjid, rumah kongsi, gereja dan kuil terletak dalam jarak beberapa ratus meter antara satu sama lain — jajaran yang jarang ditemui dan menjadi teras nilai warisan dunianya.' },
       { title: 'Cerita rakyat & lagenda', text: 'Ribuan cerita beredar di jalan-jalan: ukiran di atas pintu lama menyimpan hajat keluarga, dan nama tempat sering datang daripada lagenda silam. Bangunan bukan sekadar bata dan mortar — ia wadah memori para pendatang, menunggu pembaca yang sabar untuk mentafsirnya.' }
     ],
-    note: 'Sumber: naratif sejarah awam dan penulisan warisan George Town. Laman ini bukan sumber akademik rasmi; untuk rujukan terperinci, lihat pangkalan data UNESCO.'
+    note: "Sumber disemak 19 Oktober 2026: George Town World Heritage Incorporated (gambaran tapak dan FAQ), UNESCO serta penyenaraian Google Maps yang dipautkan. Ini panduan pelawat bebas. Penilaian dan jumlah ulasan Maps boleh berubah.",
   },
   routes: {
     kicker: '03 / LALUAN PILIHAN',
     title1: 'Tiga cara membaca',
     title2: 'George Town.',
-    body: 'Jangan kejar semuanya. Pilih satu tema, berjalan perlahan, dan biarkan bandar memberi kejutan kecil.',
+    body: "Pilih beberapa hentian tanpa jadual tetap: seni jalanan Lebuh Armenian, warisan klan Khoo Kongsi dan persisiran Clan Jetties. Semak akses, waktu dan bayaran setiap tempat.",
     cards: [
-      { title: 'Clan Jetties', tag: 'Komuniti atas air', text: 'Masuki rumah kayu di atas laut dan pasang surut, rasakan skala harian komuniti pendatang Cina Pulau Pinang.', image: '/gallery/georgetown-unesco-historic-site-21.jpg' },
+      { title: 'Clan Jetties', tag: 'Komuniti atas air', text: 'Lihat komuniti persisiran dari laluan awam; hormati rumah persendirian.', image: '/gallery/georgetown-unesco-historic-site-21.jpg' },
       { title: 'Kawasan mural', tag: 'Siar bandar', text: 'Sepanjang Lebuh Armenian dan lorong-lorong sekitarnya, cari mural besi tempa dan seni jalanan.', image: '/gallery/georgetown-unesco-historic-site-2.jpg' },
       { title: 'Khoo Kongsi', tag: 'Rumah kongsi', text: 'Ukiran kayu halus, daun emas dan memori klan membentuk salah satu ruang dalaman George Town yang paling dramatik.', image: '/gallery/georgetown-unesco-historic-site-8.jpg' }
     ],
@@ -77,14 +77,11 @@ export const content: PageContent = {
     title2: 'yang membantu.',
     bigCopy: 'Datang dengan rasa ingin tahu, bukan senarai semak. Berikut asas untuk menjadikan hari anda lebih lancar.',
     items: [
-      { title: 'Pengangkutan terperinci', html: '<p><strong>Lapangan Terbang Antarabangsa Pulau Pinang</strong><br/>Dari Bayan Lepas, ambil Rapid Penang 102 atau 401E ke pusat bandar; teksi dan e-hailing lebih terus. Anggarkan 35–60 minit bergantung trafik.</p><p><strong>Bas awam</strong><br/>Rapid Penang menghubungkan terminal KOMTAR dengan banyak kawasan bandar. Turun di sekitar Lebuh Chulia / KOMTAR dan sambung berjalan.</p><p><strong>Teksi & e-hailing</strong><br/>Minta turun di Lebuh Chulia atau KOMTAR. Jalan warisan mempunyai lorong sempit dan jalan sehala; berjalan kaki biasanya lebih cepat untuk jarak dekat.</p>' },
-      { title: 'Tiket, kos & waktu', html: '<p>Kawasan warisan terbuka boleh diterokai secara percuma. Muzium, rumah kongsi dan tarikan berbayar mempunyai tiket sendiri. Waktu operasi berbeza; kebanyakan tempat dibuka setiap hari dan ada yang ditutup sekitar 17:00. Semak papan tanda di lokasi kerana waktu boleh berubah mengikut musim dan hari perayaan.</p>' },
-      { title: 'Tempat letak kereta', html: '<p>Ruang parkir jalanan di pusat warisan adalah terhad dan banyak jalan sehala. Gunakan tempat letak kereta berbayar atau bangunan parkir sekitar KOMTAR dan kawasan persisiran, kemudian berjalan atau naik bas CAT percuma jika tersedia. Elakkan membawa kenderaan bersaiz besar ke lorong sempit.</p>' },
-      { title: 'Kemudahan & tandas awam', html: '<p>Kawasan warisan melibatkan perjalanan kaki yang panjang; tandas awam tidak tersebar di setiap lorong. Tandas kemudahan awam biasanya terdapat di pusat beli-belah besar, stesen pengangkutan dan beberapa muzium. Cari papan tanda atau semak peta dalam talian sebelum berjalan jauh. Sebaiknya bawa bekalan air minuman sendiri — banyak jalan berteduh tetapi cuaca panas.</p>' },
-      { title: 'Penginapan berdekatan', html: '<p>Terdapat pelbagai pilihan penginapan di dalam dan sekitar tapak warisan — dari asrama bajet, homestay, hotel butik, hingga hotel mewah. Penginapan di dalam kawasan bersejarah membolehkan anda menerokai kawasan itu pada awal pagi dan lewat petang apabila kurang sesak. Semak lokasi relatif kepada laluan anda, akses bas dan tahap bunyi di kawasan itu sebelum menempah.</p>' },
-      { title: 'Makan & bekalan', html: '<p>Makanan jalanan, kedai kopi, restoran dan kedai serbaneka mudah ditemui. Banyak lorong dipenuhi gerai dan restoran tempatan yang sibuk dengan penduduk tempatan. Kedai serbaneka dan pasar mini mudah ditemui untuk bekalan air, makanan ringan dan barangan harian. Untuk pilihan yang lebih meluas, pergi ke kompleks beli-belah atau pasar basah berhampiran.</p>' },
-      { title: 'Akses & kebolehcapaian', html: '<p>Jalan utama agak rata dan mudah dilalui dengan kerusi roda atau kereta sorong, tetapi sesetengah lorong lama, batu lorong dan ambang tinggi boleh menyukarkan. Banyak rumah ibadat dan rumah kongsi mempunyai anak tangga. Rancang laluan melalui jalan utama, gunakan laluan pejalan kaki dan minta bantuan jika perlu. Masa yang lebih panjang dan perhentian yang kerap disyorkan.</p>' },
-      { title: 'Masa terbaik & tempoh', html: '<p>07:30–10:30 paling selesa untuk fasad dan fotografi; 16:00 hingga senja sesuai untuk lorong dan seni jalanan. Peruntukkan 3–4 jam untuk laluan ringkas, atau satu hari untuk menjelajah tanpa tergesa-gesa. Elakkan tengah hari jika sensitif terhadap panas.</p>' }
+      {"title": "Titik mula berjalan", "html": "<p>Buka pin Maps di Lebuh Chulia, kemudian pilih laluan ke Lebuh Armenian, Khoo Kongsi atau Clan Jetties. Ini cadangan hentian, bukan lawatan berpandu mengikut jadual. Semak setiap tempat sebelum masuk.</p>"},
+      {"title": "Waktu dan tiket", "html": "<p>Penyenaraian Maps memaparkan Isnin–Jumaat 09:00–17:00 serta Sabtu–Ahad tutup, disemak 19 Oktober 2026. Waktu ini untuk penyenaraian itu sahaja, bukan bermaksud seluruh jalan bersejarah ditutup pada hujung minggu. Muzium, rumah ibadat, kedai dan rumah kongsi menentukan waktu serta bayaran masing-masing. Sahkan dengan pengendali.</p>"},
+      {"title": "Pengangkutan dan parkir", "html": "<p>Semak laluan, tambang, peraturan parkir dan tempat turun semasa dengan penyedia pengangkutan. Sesuaikan perjalanan dengan mobiliti dan cuaca; panduan ini tidak menjamin nombor bas atau masa perjalanan lapangan terbang.</p>"},
+      {"title": "Kemudahan dan akses", "html": "<p>Sahkan tandas, kemudahan bayi, pintu masuk tanpa tangga dan akses kerusi roda terus dengan tempat yang akan dilawati. Jalan dan bangunan lama mungkin mempunyai permukaan tidak rata, laluan sempit dan ambang. Bawa air dan rancang rehat.</p>"},
+      {"title": "Hormati bandar yang dihuni", "html": "<p>Kawasan warisan merangkumi rumah kediaman dan rumah ibadat aktif. Patuhi papan tanda, minta izin sebelum mengambil gambar penduduk dan jangan masuk rumah persendirian di jeti. Senarai simpanan berada pada peranti anda; laman ini tidak menyediakan peta luar talian.</p>"}
     ]
   },
   food: {
@@ -120,7 +117,7 @@ export const content: PageContent = {
     kicker: '08 / BUKA PETA',
     title1: 'Mulakan di',
     title2: 'Lebuh Chulia.',
-    body: 'Alamat rujukan: 159, Lebuh Chulia, 10200 George Town, Pulau Pinang.',
+    body: "Rujukan pin peta sahaja: 159, Lebuh Chulia, 10200 George Town, Pulau Pinang. Pin ini bukan alamat atau pintu masuk bagi seluruh Tapak Warisan Dunia.",
     button: 'Buka dalam Google Maps ↗',
     iframeTitle: 'Peta George Town UNESCO Historic Site'
   },
@@ -129,19 +126,11 @@ export const content: PageContent = {
     title1: 'Anda tanya,',
     title2: 'kami jawab.',
     items: [
-      { q: 'Adakah George Town sebuah Tapak Warisan Dunia UNESCO?', a: 'Ya. George Town disenaraikan dalam Senarai Warisan Dunia UNESCO pada 2008 bersama Melaka, diiktiraf kerana landskap bandar pelbagai budaya yang masih didiami hingga hari ini. Panduan ini merangkumi teras bersejarah — lihat senarai rasmi di whc.unesco.org/en/list/1223.' },
-      { q: 'Apakah tempat wajib lawati jika saya hanya ada setengah hari?', a: 'Berjalan satu pusingan padat: rumah kongsi Khoo Kongsi, kawasan mural Lebuh Armenian, tepi laut Clan Jetties dan Fort Cornwallis. Empat hingga lima jam cukup untuk keempat-empatnya, dengan satu perhentian makanan jalanan di antara.' },
-      { q: 'Adakah laluan warisan pandu sendiri yang boleh saya ikuti?', a: 'Ya — tiga laluan bertema di atas (Clan Jetties, Mural Quarter, Khoo Kongsi) sesuai dijadikan laluan pandu sendiri tanpa tempahan atau pemandu. Simpan tempat yang anda mahu dengan butang ＋; senarai itu kekal pada peranti anda dan boleh digunakan tanpa talian semasa berjalan.' },
-      { q: 'Adakah tapak Warisan Dunia UNESCO George Town memerlukan tiket?', a: 'Kawasan bersejarah itu sendiri terbuka kepada pejalan kaki tanpa tiket bersatu. Sesetengah rumah kongsi, muzium dan tarikan berbayar menjual tiket berasingan — semak notis di lokasi sebelum pergi.' },
-      { q: 'Bagaimana saya sampai ke sini dari Lapangan Terbang Antarabangsa Pulau Pinang?', a: 'Lapangan terbang berjarak kira-kira 18 km dari George Town. Naik bas Rapid Penang, atau gunakan teksi atau e-hailing; masa perjalanan berbeza mengikut trafik, jadi peruntukkan 35–60 minit.' },
-      { q: 'Berapa lama masa yang perlu saya peruntukkan?', a: 'Pelawat kali pertama patut peruntukkan setengah hari hingga satu hari penuh. Jika mahu menikmati seni bina, makan jalanan dan sertakan laluan Clan Jetties, satu hari penuh lebih selesa.' },
-      { q: 'Bilakah masa terbaik untuk berjalan kaki?', a: 'Awal pagi dan lewat petang menawarkan cahaya lembut dan suhu lebih selesa. Pada tengah hari, simpan masa untuk galeri dalaman, kafe atau hidangan Nyonya yang santai.' },
-      { q: 'Adakah terdapat tandas awam dan kemudahan penjagaan bayi berdekatan?', a: 'Tandas awam, tandas pusat beli-belah dan pasar raya besar biasanya terdapat di sekitar kawasan komersial utama dan hab pengangkutan — bukan di setiap lorong lama. Sebelum keluar, tandakan satu atau dua tandas yang disahkan pada aplikasi peta; jika membawa bayi, utamakan bilik penjagaan bayi di pusat beli-belah besar dan muzium.' },
-      { q: 'Bolehkah saya memandu masuk ke kawasan warisan?', a: 'Teras warisan berorientasikan pejalan kaki; jalan lama kebanyakannya sehala dan sempit, jadi memandu tidak disyorkan. Park di tempat letak kereta berbayar atau parkir pusat beli-belah berdekatan, kemudian masuk dengan berjalan kaki atau perkhidmatan ulang-alik percuma.' },
-      { q: 'Adakah mudah diakses dengan kerusi roda atau kereta sorong?', a: 'Kaki lima di jalan utama agak rata, tetapi lorong batu, ambang dan lima kaki yang sempit di bahagian bandar lama tidak mesra kerusi roda. Pilih jalan utama dan bahagian baru dengan tanjakan; dalaman rumah kongsi selalunya ada anak tangga dan ambang. Rancang laluan yang lebih perlahan lebih awal dan peruntukkan masa tambahan.' },
-      { q: 'Adakah terdapat pilihan penginapan berdekatan?', a: 'Di dalam dan sekitar kawasan warisan, pilihan terdiri daripada asrama bajet hingga hotel butik dan mewah. Kebanyakannya dalam jarak berjalan kaki dari tarikan utama, sesuai jika mahu menyebarkan lawatan ke awal pagi dan lewat petang. Kemudahan dan lokasi berbeza mengikut harga, jadi bandingkan mengikut bajet dan laluan anda.' },
-      { q: 'Adakah makanan dan bekalan mudah didapati?', a: 'Sangat mudah. Pusat penjaja, kedai kopi, kedai serbaneka dan pasar raya padat, dengan banyak pilihan untuk hidangan penuh, makanan ringan dan snek jalanan. Untuk nilai terbaik, pusat penjaja dan gerai tepi jalan biasanya lebih menjimatkan; kedai serbaneka mudah ditemui untuk air dan keperluan harian.' },
-      { q: 'Ada cadangan pakaian untuk berjalan kaki?', a: 'Pulau Pinang panas dan lembap sepanjang tahun. Pakai pakaian ringan, bernafas dan cepat kering dengan kasut berjalan yang selesa dan tidak licin, serta bawa air, pelindung matahari dan payung. Jika merancang memasuki rumah ibadat, berpakaian sopan, tutup bahu dan patuhi peraturan menanggalkan kasut.' }
+      {"q": "Mengapa George Town diiktiraf UNESCO?", "a": "George Town dan Melaka disenaraikan bersama pada 7 Julai 2008 kerana warisan bandar perdagangan pelbagai budaya. Zon teras George Town seluas 109.38 hektar dengan zon penampan 150.04 hektar."},
+      {"q": "Adakah George Town tutup pada hujung minggu?", "a": "Jangan gunakan waktu Isnin–Jumaat 09:00–17:00 dan penutupan hujung minggu bagi penyenaraian Maps untuk seluruh daerah bersejarah. Muzium, rumah kongsi, rumah ibadat dan kedai mempunyai jadual sendiri; semak dengan setiap pengendali."},
+      {"q": "Adakah satu tiket untuk seluruh kawasan warisan?", "a": "Rancang setiap tarikan secara berasingan. Tempat tertentu mungkin mengenakan bayaran dan syarat masuk. Sahkan harga serta waktu semasa terus sebelum berkunjung."},
+      {"q": "Apakah hentian untuk berjalan kaki?", "a": "Pilih seni jalanan Lebuh Armenian, Khoo Kongsi atau Clan Jetties. Beri ruang untuk rehat dan kehidupan penduduk; semak akses dan waktu setiap hentian."},
+      {"q": "Ke manakah pin peta membawa saya?", "a": "Pin menggunakan 159, Lebuh Chulia sebagai rujukan. Tapak Warisan Dunia ialah kawasan bandar, bukan satu bangunan di alamat ini."}
     ]
   },
   plan: {
@@ -163,7 +152,7 @@ export const content: PageContent = {
     legalKicker: '10 / PENGGUNAAN LAMAN',
     legalTitle1: 'Privasi, terma dan',
     legalTitle2: 'tetapan cookie.',
-    lead: 'Maklumat tarikan di laman ini disusun dengan merujuk serta menyemak silang bahan awam daripada Majlis Bandaraya Pulau Pinang (MBPP), Penang Global Tourism dan Tourism Malaysia, tanpa sebarang cadangan berbentuk komersial.',
+    lead: "Sumber disemak 19 Oktober 2026: George Town World Heritage Incorporated (gambaran tapak dan FAQ), UNESCO serta penyenaraian Google Maps yang dipautkan. Ini panduan pelawat bebas. Penilaian dan jumlah ulasan Maps boleh berubah.",
     privacyTitle: 'Dasar Privasi',
     privacyUpdated: 'Terakhir dikemas kini: Ogos 2026',
     privacyHtml: `<p>Kami hanya mengumpul data minimum yang diperlukan untuk menyediakan dan menambah baik laman ini. Ini mungkin termasuk data pelayaran seperti alamat IP, jenis pelayar dan halaman yang dilawati, cookie dan teknologi seumpamanya, serta maklumat yang anda berikan secara sukarela apabila menghubungi kami melalui e-mel atau saluran langsung lain.</p><p>Maklumat ini digunakan untuk menambah baik kandungan dan pengalaman pengguna, menganalisis trafik serta corak penggunaan, menjawab pertanyaan, dan mematuhi kewajipan undang-undang yang berkenaan.</p><p>Laman ini mungkin menggunakan perkhidmatan pihak ketiga seperti Google Maps untuk peta terbenam dan data lokasi, serta Google Analytics untuk pengukuran trafik. Jika perkhidmatan imej atau infrastruktur pihak ketiga lain ditambah pada masa hadapan, dasar privasi platform berkenaan juga akan terpakai.</p><p>Di bawah GDPR dan peraturan berkaitan, anda secara amnya mempunyai hak untuk mengakses data peribadi anda, meminta pembetulan atau pemadaman, membantah pemprosesan tertentu, dan membuat aduan kepada pihak berkuasa penyeliaan.</p><p>Hak imej: hak cipta dan hak berkaitan bagi imej yang dipaparkan di laman ini adalah milik jurugambar asal atau pemegang hak yang sah.</p>`,
